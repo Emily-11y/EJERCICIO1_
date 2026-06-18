@@ -1,18 +1,13 @@
 
 package Modelo;
-
 /**
  * Representa un personaje de tipo Mago.
  * El mago utiliza su poder mágico para atacar  y el maná para fortalecer su defensa.
- *
- * @author Emily
  */
 public class Mago extends Personaje {
 
-
     private static final int BONUS_ATAQUE = 6;
     private static final int BONUS_DEFENSA = 3;
-
 
     private int poderMagico;
     private int mana;
@@ -20,7 +15,7 @@ public class Mago extends Personaje {
     public Mago(String nombre,int puntosVida,int nivelExperiencia, int poderMagico, int mana) {
         super(nombre, puntosVida, nivelExperiencia);
         this.poderMagico = poderMagico;
-        this.mana = mana;
+        this.mana = mana;//fortalece defensa
     }
 
     @Override
