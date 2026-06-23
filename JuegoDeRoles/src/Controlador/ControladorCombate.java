@@ -1,52 +1,46 @@
-
 package Controlador;
+
+import Modelo.EstadoCongelado;
+import Modelo.EstadoEnvenenado;
 import Modelo.Personaje;
+import Modelo.SinEnergiaException;
 
 /**
- * Clase encargada de administrar el combate entre dos personajes.
- * Aquí se concentra toda la lógica del juego, respetando el patrón MVC.
-
+ * Controlador de combate expandido.
+ * Integra las tres nuevas funcionalidades:
+ *   1. calcularAtaque() / calcularDefensa() para incluir el equipamiento.
+ *   2. procesarEstados() al inicio de cada turno (veneno, congelación, buffs).
+ *   3. Intento de habilidad especial antes del ataque normal (cooldown + energía).
  */
 public class ControladorCombate {
+
+    private static final int TURNOS_HABILIDAD = 3; // intentar habilidad cada N turnos
+
     /**
-     * Realiza una batalla entre dos personajes utilizando polimorfismo.
+     * Realiza una batalla completa entre dos personajes.
+     *
+     * @return el personaje ganador.
      */
-    public Personaje combatir(Personaje personaje1,Personaje personaje2) {
+    public Personaje combatir(Personaje p1, Personaje p2) {
+        int turno = 1;
 
-        while (personaje1.estaVivo() && personaje2.estaVivo()) {
-            realizarAtaque(personaje1, personaje2);
-            if (!personaje2.estaVivo()) {
-                break;
-            }
-            realizarAtaque(personaje2, personaje1);
+        while (p1.estaVivo() && p2.estaVivo()) {
+            System.out.println("\n══════════════ TURNO " + turno + " ══════════════");
+            mostrarEstado(p1, p2);
 
+            // ── Turno de p1 ──────────────────────────────────────────────────
+            ejecutarTurno(p1, p2, turno);
+            if (!p2.estaVivo()) break;
+
+            // ── Turno de p2 ──────────────────────────────────────────────────
+            ejecutarTurno(p2, p1, turno);
+
+            turno++;
         }
 
-        if (personaje1.estaVivo()) {
-            personaje1.subirNivel();
-            return personaje1;
-        }
-
-        personaje2.subirNivel();
-        return personaje2;
-
+        // Determinar ganador
+        Personaje ganador = p1.estaVivo() ? p1 : p2;
+        ganador.subirNivel();
+        System.out.println("\n🏆 ¡" + ganador.getNombre() + " ha ganado el combate y sube de nivel!");
+        return ganador;
     }
-    /**
-     * Calcula el daño que un personaje ocasiona a otro.
-     */
-    private void realizarAtaque(Personaje atacante,Personaje defensor) {
-
-        int ataque = atacante.atacar();
-        int defensa = defensor.defender();
-
-        int danio = ataque - defensa;
-
-        // Evita daños negativos
-        if (danio < 0) {
-            danio = 0;
-        }
-        defensor.recibirDanio(danio);
-
-    }
-
-}
