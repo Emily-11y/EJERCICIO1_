@@ -69,4 +69,3 @@ public class Guerrero1 extends Personaje {
                 + "\nArmadura: " + armadura;
     }
 }
-
