@@ -1,4 +1,5 @@
 
+
 package Modelo;
 
 import Modelo.Objeto;
@@ -22,3 +23,5 @@ public class Arma extends Objeto {
         return super.toString() + " [+ATQ: " + bonusAtaque + "]";
     }
 }
+
+

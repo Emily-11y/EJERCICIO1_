@@ -41,7 +41,7 @@ public class ControladorCombate {
         // Determinar ganador
         Personaje ganador = p1.estaVivo() ? p1 : p2;
         ganador.subirNivel();
-        System.out.println("\n🏆 ¡" + ganador.getNombre() + " ha ganado el combate y sube de nivel!");
+        System.out.println("\n " + ganador.getNombre() + " ha ganado el combate y sube de nivel!");
         return ganador;
     }
 
