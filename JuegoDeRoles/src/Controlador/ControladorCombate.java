@@ -25,7 +25,7 @@ public class ControladorCombate {
         int turno = 1;
 
         while (p1.estaVivo() && p2.estaVivo()) {
-            System.out.println("\n══════════════ TURNO " + turno + " ══════════════");
+            System.out.println("\n============ TURNO " + turno + " ===============");
             mostrarEstado(p1, p2);
 
             // ── Turno de p1 ──────────────────────────────────────────────────
@@ -54,13 +54,13 @@ public class ControladorCombate {
      *  5. Regenera energía.
      */
     private void ejecutarTurno(Personaje atacante, Personaje defensor, int turno) {
-        System.out.println("\n▶ Turno de " + atacante.getNombre() + ":");
+        System.out.println("\n Turno de " + atacante.getNombre() + ":");
 
         // 1. Procesar estados alterados (veneno, congelación, etc.)
         atacante.procesarEstados();
 
         if (!atacante.estaVivo()) {
-            System.out.println("  " + atacante.getNombre() + " murió por los efectos de estado.");
+            System.out.println("  " + atacante.getNombre() + " murio por los efectos de estado.");
             return;
         }
 
@@ -106,7 +106,7 @@ public class ControladorCombate {
             }
 
         } catch (SinEnergiaException e) {
-            System.out.println("  ⚠ " + e.getMessage());
+            System.out.println("error " + e.getMessage());
         }
     }
 
@@ -120,7 +120,7 @@ public class ControladorCombate {
         int danio   = Math.max(0, ataque - defensa);
 
         defensor.recibirDanio(danio);
-        System.out.printf("  %s ataca con %d (ATQ:%d - DEF:%d) → %s pierde %d PV. Vida restante: %d%n",
+        System.out.printf("%s ataca con %d (ATQ:%d - DEF:%d) → %s pierde %d PV. Vida restante: %d%n",
                 atacante.getNombre(), danio,
                 ataque, defensa,
                 defensor.getNombre(), danio,

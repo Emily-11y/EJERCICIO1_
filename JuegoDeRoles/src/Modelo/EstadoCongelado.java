@@ -18,12 +18,18 @@ public class EstadoCongelado implements IEstadoAlterado {
         if (turnosRestantes > 0) {
             turnosRestantes--;
             System.out.println("  [Hielo] " + objetivo.getNombre()
-                    + " está congelado y no puede atacar. "
+                    + " esta congelado y no puede atacar. "
                     + "(Turnos restantes: " + turnosRestantes + ")");
         }
     }
 
-    @Override public boolean haExpirado()    { return turnosRestantes <= 0; }
-    @Override public boolean bloqueaAtaque() { return turnosRestantes > 0; }
-    @Override public int     getBonusAtaque(){ return 0; }
+    @Override public boolean haExpirado()    { 
+        return turnosRestantes <= 0; 
+    }
+    @Override public boolean bloqueaAtaque() { 
+        return turnosRestantes > 0; 
+    }
+    @Override public int  getBonusAtaque(){ 
+        return 0; 
+    }
 }

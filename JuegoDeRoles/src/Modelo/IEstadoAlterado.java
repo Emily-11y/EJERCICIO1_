@@ -16,10 +16,10 @@ public interface IEstadoAlterado {
      */
     void aplicar(Personaje objetivo);
 
-    /** @return true si el estado ya agotó su duración. */
+    /** retorna true si el estado ya agotó su duración. */
     boolean haExpirado();
 
-    /** @return true si este estado impide atacar durante el turno. */
+    /** retorna true si este estado impide atacar durante el turno. */
     boolean bloqueaAtaque();
 
     /**

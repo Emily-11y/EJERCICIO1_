@@ -18,7 +18,7 @@ public class Mago1 extends Personaje {
 
     public Mago1(String nombre, int puntosVida, int nivelExperiencia,
                 int poderMagico, int mana) {
-        super(nombre, puntosVida, nivelExperiencia);
+        super(nombre, puntosVida, nivelExperiencia, 120);
         this.poderMagico = poderMagico;
         this.mana        = mana;
     }
@@ -47,28 +47,33 @@ public class Mago1 extends Personaje {
     @Override
     public String usarHabilidadEspecial() throws SinEnergiaException {
         if (!habilidadDisponible()) {
-            return "[" + nombre + "] Ventisca Gélida en cooldown ("
+            return "[" + nombre + "] Ventisca Gelida en cooldown ("
                     + getCooldownHabilidad() + " turnos restantes).";
         }
         consumirEnergia(COSTO_ENERGIA_HABILIDAD);
         setCooldownHabilidad(COOLDOWN_HABILIDAD_TURNOS);
         // El controlador detecta "CONGELAR_RIVAL" y aplica el estado al oponente
-        return "CONGELAR_RIVAL:[" + nombre + "] lanza ¡VENTISCA GÉLIDA! "
-                + "El rival quedará congelado 1 turno. (Energía restante: " + energia + ")";
+        return "CONGELAR_RIVAL:[" + nombre + "] lanza ¡VENTISCA GELIDA! "
+                + "El rival quedara congelado 1 turno. (Energia restante: " + energia + ")";
     }
 
     // ── Getters / Setters ─────────────────────────────────────────────────────
     public int getPoderMagico() { return poderMagico; }
     public int getMana()        { return mana; }
 
-    public void setPoderMagico(int poderMagico) { if (poderMagico > 0)  this.poderMagico = poderMagico; }
-    public void setMana(int mana)               { if (mana >= 0)        this.mana        = mana; }
+    public void setPoderMagico(int poderMagico) { 
+        if (poderMagico > 0)  
+        this.poderMagico = poderMagico; }
+    
+    public void setMana(int mana) { 
+        if (mana >= 0)        
+        this.mana= mana; }
 
     @Override
     public String toString() {
         return "----- MAGO -----\n"
                 + super.toString()
-                + "\nPoder mágico: " + poderMagico
-                + "\nManá: " + mana;
+                + "\nPoder magico: " + poderMagico
+                + "\nMana: " + mana;
     }
 }

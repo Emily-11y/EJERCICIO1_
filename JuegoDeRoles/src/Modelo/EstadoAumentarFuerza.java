@@ -23,7 +23,7 @@ public class EstadoAumentarFuerza implements IEstadoAlterado {
             turnosRestantes--;
             System.out.println("  [Buff] " + objetivo.getNombre()
                     + " tiene fuerza aumentada +" + bonusAtaque
-                    + " ATQ. (Turnos restantes: " + turnosRestantes + ")");
+                    + " Ataque (Turnos restantes: " + turnosRestantes + ")");
         }
     }
 

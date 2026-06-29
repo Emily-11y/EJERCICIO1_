@@ -76,7 +76,7 @@ public abstract class Personaje {
             agregarAlInventario(arma);
         }
         this.armaEquipada = arma;
-        System.out.println("  [Equipo] " + nombre + " equipó arma: "
+        System.out.println("  [Equipo] " + nombre + " equipo arma: "
                 + arma.getNombre() + " (+" + arma.getBonusAtaque() + " ATQ)");
     }
 
@@ -85,7 +85,7 @@ public abstract class Personaje {
             agregarAlInventario(armadura);
         }
         this.armaduraEquipada = armadura;
-        System.out.println("  [Equipo] " + nombre + " equipó armadura: "
+        System.out.println("  [Equipo] " + nombre + " equipo armadura: "
                 + armadura.getNombre() + " (+" + armadura.getBonusDefensa() + " DEF)");
     }
 
@@ -166,7 +166,7 @@ public abstract class Personaje {
 
     protected void consumirEnergia(int cantidad) throws SinEnergiaException {
         if (energia < cantidad) {
-            throw new SinEnergiaException(nombre + " no tiene suficiente energía. "
+            throw new SinEnergiaException(nombre + " no tiene suficiente energia. "
                     + "Necesita " + cantidad + " pero solo tiene " + energia + ".");
         }
         energia -= cantidad;
@@ -198,7 +198,7 @@ public abstract class Personaje {
         sb.append("Nombre: ").append(nombre)
           .append("\nPuntos de vida: ").append(puntosVida)
           .append("\nNivel de experiencia: ").append(nivelExperiencia)
-          .append("\nEnergía: ").append(energia).append("/").append(energiaMaxima);
+          .append("\nEnergia: ").append(energia).append("/").append(energiaMaxima);
 
         if (armaEquipada    != null) sb.append("\nArma equipada: ").append(armaEquipada.getNombre());
         if (armaduraEquipada != null) sb.append("\nArmadura equipada: ").append(armaduraEquipada.getNombre());

@@ -15,6 +15,6 @@ public class Armadura extends Objeto {
 
     @Override
     public String toString() {
-        return super.toString() + " [+DEF: " + bonusDefensa + "]";
+        return super.toString() + " [+DEFensa: " + bonusDefensa + "]";
     }
 }

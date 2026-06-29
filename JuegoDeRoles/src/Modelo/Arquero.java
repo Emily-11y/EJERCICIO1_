@@ -1,5 +1,5 @@
+package Modelo;
 
-import Modelo.Personaje;
 
 
 /**
@@ -20,7 +20,9 @@ public class Arquero extends Personaje {
 
     public Arquero(String nombre, int puntosVida, int nivelExperiencia,
                    int precision, int agilidad) {
-        super(nombre, puntosVida, nivelExperiencia);
+        super(nombre, puntosVida, nivelExperiencia, 90);
+        this.puntosVida = puntosVida;
+        this.nivelExperiencia  = nivelExperiencia;
         this.precision = precision;
         this.agilidad  = agilidad;
     }
@@ -51,22 +53,33 @@ public class Arquero extends Personaje {
         consumirEnergia(COSTO_ENERGIA_HABILIDAD);
         setCooldownHabilidad(COOLDOWN_HABILIDAD_TURNOS);
         return "ENVENENAR_RIVAL:[" + nombre + "] dispara ¡FLECHA ENVENENADA! "
-                + "El rival recibirá 8 de daño por veneno durante 3 turnos. "
-                + "(Energía restante: " + energia + ")";
+                + "El rival recibira 8 de daño por veneno durante 3 turnos. "
+                + "(Energia restante: " + energia + ")";
     }
 
     // ── Getters / Setters ─────────────────────────────────────────────────────
-    public int getPrecision() { return precision; }
-    public int getAgilidad()  { return agilidad;  }
+    public int getPrecision() { 
+        return precision; 
+    }
+    public int getAgilidad()  { 
+        return agilidad;  
+    }
 
-    public void setPrecision(int precision) { if (precision > 0)  this.precision = precision; }
-    public void setAgilidad(int agilidad)   { if (agilidad >= 0)  this.agilidad  = agilidad;  }
+    public void setPrecision(int precision) { 
+        if (precision > 0)  
+            this.precision = precision;
+    }
+    public void setAgilidad(int agilidad)   { 
+        if (agilidad >= 0)  
+            this.agilidad  = agilidad;  
+    }
 
     @Override
     public String toString() {
         return "----- ARQUERO -----\n"
                 + super.toString()
-                + "\nPrecisión: " + precision
+                + "\nPrecision: " + precision
                 + "\nAgilidad: " + agilidad;
     }
 }
+
