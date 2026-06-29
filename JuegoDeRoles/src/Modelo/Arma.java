@@ -1,9 +1,5 @@
 
-
 package Modelo;
-
-import Modelo.Objeto;
-
 /**
  * Representa un arma equipable que incrementa el ataque del personaje
  * Funcionalidad 1: Sistema de Inventario y Equipamiento.
@@ -16,11 +12,13 @@ public class Arma extends Objeto {
         this.bonusAtaque = bonusAtaque;
     }
 
-    public int getBonusAtaque() { return bonusAtaque; }
+    public int getBonusAtaque() {
+        return bonusAtaque;
+    }
 
     @Override
     public String toString() {
-        return super.toString() + " [+ATQ: " + bonusAtaque + "]";
+        return super.toString() + " [+Ataque: " + bonusAtaque + "]";
     }
 }
 
